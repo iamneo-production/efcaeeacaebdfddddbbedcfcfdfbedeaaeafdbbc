@@ -1,31 +1,48 @@
-import React, { useState } from 'react'
-import ChoiceButton from '../Button/ChoiceButton'
-import css from './Card.module.css'
-import correctAnswer from '../../../Data/answer.json'
+import React, { useState } from "react";
+import Button from "../Button/Button";
 
-function Card(props) {
-  const [clicked, setClicked] = useState(false)
-  const clickSetter = ()=>{
-    setClicked(true)
-  }
-  const choiceSetter = (choice)=>{
-    if(choice===correctAnswer[props.question]){
-      props.scoreSetter();
+const Card = (props) => {
+  const ans = props.answer;
+  const [disabled, setDisabled] = useState(false);
+
+  const check = (a) => {
+    setDisabled(true);
+    if (a === ans) {
+      props.attempt(true);
     }
-  }
-  if(!props.reset&&clicked){
-    setClicked(false);
-  }
-  return (
-    <div className={css.ctn}>
-        <div className={css.question}>{props.question}</div>
-        <div className={css.choiceCtn}>
-           { 
-            props.answer.map((ans)=><ChoiceButton disable={props.reset&&clicked} key={ans} val={ans} clickSetter={clickSetter} countSetter={props.countSetter} choiceSetter={choiceSetter}/>)
-           } 
-        </div>
-    </div>
-  )
-}
+  };
 
-export default Card
+  return (
+    <div className="card">
+      <h4>{props.question}</h4>
+      <div className="buttons">
+        <Button
+          disabled={disabled}
+          onClick={() => check(props.options.option1)}
+        >
+          {props.options.option1}
+        </Button>
+        <Button
+          disabled={disabled}
+          onClick={() => check(props.options.option2)}
+        >
+          {props.options.option2}
+        </Button>
+        <Button
+          disabled={disabled}
+          onClick={() => check(props.options.option3)}
+        >
+          {props.options.option3}
+        </Button>
+        <Button
+          disabled={disabled}
+          onClick={() => check(props.options.option4)}
+        >
+          {props.options.option4}
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
