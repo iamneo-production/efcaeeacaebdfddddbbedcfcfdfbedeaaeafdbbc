@@ -14,7 +14,8 @@ const [marked, setMarked]= useState(false);
 
 // Event handler to handle the click event on the options
 
-const click (clicked) => { // Increase the question attempted
+const click = (clicked) => { 
+  // Increase the question attempted
 
 setQsns (qsn+1)
 
@@ -25,18 +26,19 @@ setMarked(true)
 if (qsnAttempt === 4) {
 
 // Show the result if all question are attempted setCard(true)
-
+setCard(true)
 }
 
 if (clicked === answer)
 
 // Increase the score if the answer is correct correctAnswerMarkUpdate (attempt + 1)
-
+correctAnswerMarkUpdate(attempt+1)
 }
 
 // Styles for the button
 
-const norm="bg-red-300 px-2 py-1 rounded hover:bg-orange-400" const disable="bg-orange-300 px-2 py-1 rounded disabled:opacity-58"
+const norm="bg-red-300 px-2 py-1 rounded hover:bg-orange-400"
+ const disable="bg-orange-300 px-2 py-1 rounded disabled:opacity-58"
 
 return (
 
@@ -46,8 +48,6 @@ return (
 
 <div className="flex space-x-2"> {optionsArray.map((option, index) =>
 
-<Button key={index} marked- {marked} onClick={() => click(optio
-
-n)) style={ Imarked? norm disable) { option }<</Button>
+<Button key={index} marked- {marked} onClick={() => click(option)) style={ Imarked? norm disable) { option }<</Button>
 
 )}
