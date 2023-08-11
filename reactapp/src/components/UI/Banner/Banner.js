@@ -1,9 +1,7 @@
-const Banner = ({score}) => { 
-return(
-<div> You have answered {score} / 5 &nbsp; Correctly
+import React from "react";
 
-</div>
-)
-}
+const Banner = (props) => {
+  return <div className="banner">{props.children}</div>;
+};
 
 export default Banner;
