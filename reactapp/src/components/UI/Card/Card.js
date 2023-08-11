@@ -6,7 +6,7 @@ const Card ({ question, correctAnswerMarkUpdate, attempt, options, answer,
 setQsns, qsn, setCard, qsnAttempt}) => {
    // Creating an array of options
 
-const optionsArray = [options.option1, options.option2, options.option3, o ptions.option4];
+const optionsArray = [options.option1, options.option2, options.option3, options.option4];
 
 // State variable to track the marked status of the button
 
