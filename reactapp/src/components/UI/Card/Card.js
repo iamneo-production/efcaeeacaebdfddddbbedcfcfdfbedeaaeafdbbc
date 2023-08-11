@@ -1,48 +1,53 @@
-import React, { useState } from "react";
+import { useState } from "react"; 
 import Button from "../Button/Button";
 
-const Card = (props) => {
-  const ans = props.answer;
-  const [disabled, setDisabled] = useState(false);
+const Card ({ question, correctAnswerMarkUpdate, attempt, options, answer,
 
-  const check = (a) => {
-    setDisabled(true);
-    if (a === ans) {
-      props.attempt(true);
-    }
-  };
+setQsns, qsn, setCard, qsnAttempt}) => {
+   // Creating an array of options
 
-  return (
-    <div className="card">
-      <h4>{props.question}</h4>
-      <div className="buttons">
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option1)}
-        >
-          {props.options.option1}
-        </Button>
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option2)}
-        >
-          {props.options.option2}
-        </Button>
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option3)}
-        >
-          {props.options.option3}
-        </Button>
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option4)}
-        >
-          {props.options.option4}
-        </Button>
-      </div>
-    </div>
-  );
-};
+const optionsArray = [options.option1, options.option2, options.option3, o ptions.option4];
 
-export default Card;
+// State variable to track the marked status of the button
+
+const [marked, setMarked]= useState(false);
+
+// Event handler to handle the click event on the options
+
+const click (clicked) => { // Increase the question attempted
+
+setQsns (qsn+1)
+
+// Mark the button as clicked
+
+setMarked(true)
+
+if (qsnAttempt === 4) {
+
+// Show the result if all question are attempted setCard(true)
+
+}
+
+if (clicked === answer)
+
+// Increase the score if the answer is correct correctAnswerMarkUpdate (attempt + 1)
+
+}
+
+// Styles for the button
+
+const norm="bg-red-300 px-2 py-1 rounded hover:bg-orange-400" const disable="bg-orange-300 px-2 py-1 rounded disabled:opacity-58"
+
+return (
+
+<div>
+
+<h4 className="pt-3 pb-1">{question}</h4>
+
+<div className="flex space-x-2"> {optionsArray.map((option, index) =>
+
+<Button key={index} marked- {marked} onClick={() => click(optio
+
+n)) style={ Imarked? norm disable) { option }<</Button>
+
+)}
